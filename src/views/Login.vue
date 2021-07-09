@@ -27,18 +27,14 @@ export default {
       user: {},
     };
   },
-  // inject: ['emitter', '$httpMessageState'],
   methods: {
     signIn() {
       const api = `${process.env.VUE_APP_API}/admin/signin`;
-      this.$http.post(api, this.user).then((response) => {
-        if (response.data.success) {
-          const { token, expired } = response.data;
+      this.$http.post(api, this.user).then((res) => {
+        if (res.data.success) {
+          const { token, expired } = res.data;
           document.cookie = `hexToken=${token};expires=${new Date(expired)};`;
-          // this.$httpMessageState(response, '登入結果');
           this.$router.push('/admin/products');
-        } else {
-          // this.$httpMessageState(response, '登入結果');
         }
       });
     },

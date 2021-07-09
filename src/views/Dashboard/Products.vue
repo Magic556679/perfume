@@ -1,5 +1,5 @@
 <template>
-    <div>
+  <div>
     <Loading :active="isLoading" :z-index="1060"></Loading>
     <div class="text-end mt-4">
       <button class="btn btn-primary" type="button" @click="openModal(true)">
@@ -22,10 +22,10 @@
           <td>{{ item.category }}</td>
           <td>{{ item.title }}</td>
           <td class="text-right">
-            {{ $filters.currency(item.origin_price) }}
+            {{ item.origin_price }}
           </td>
           <td class="text-right">
-            {{ $filters.currency(item.price) }}
+            {{ item.price }}
           </td>
           <td>
             <span v-if="item.is_enabled" class="text-success">啟用</span>
@@ -65,9 +65,104 @@
   </div>
 </template>
 <script>
+import Pagination from '@/components/Pagination.vue';
+import ProductModal from '@/components/ProductModal.vue';
+import DelModal from '@/components/DelModal.vue';
+
 export default {
   data() {
-    return {};
+    return {
+      products: [],
+      pagination: {},
+      tempProduct: {
+        imagesUrl: [],
+      },
+      isNew: false,
+      isLoading: false,
+      status: {
+        fileUploading: false,
+      },
+      modal: {
+        editModal: '',
+        delModal: '',
+      },
+      currentPage: 1,
+    };
+  },
+  components: {
+    Pagination,
+    ProductModal,
+    DelModal,
+  },
+  // inject: ['emitter', '$httpMessageState'],
+  methods: {
+    getProducts(page = 1) {
+      this.currentPage = page;
+      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/products?page=${page}`;
+      this.isLoading = true;
+      this.$http.get(api).then((res) => {
+        if (res.data.success) {
+          this.products = res.data.products;
+          this.pagination = res.data.pagination;
+          this.isLoading = false;
+        }
+      });
+    },
+    openModal(isNew, item) {
+      if (isNew) {
+        this.tempProduct = {};
+        this.isNew = true;
+      } else {
+        this.tempProduct = { ...item };
+        this.isNew = false;
+      }
+      const productComponent = this.$refs.productModal;
+      productComponent.openModal();
+    },
+    updateProduct(item) {
+      this.tempProduct = item;
+      let api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/product`;
+      let httpMethod = 'post';
+      // let stauts = '新增產品';
+      if (!this.isNew) {
+        api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/product/${this.tempProduct.id}`;
+        httpMethod = 'put';
+        // stauts = '更新產品';
+      }
+      const productComponent = this.$refs.productModal;
+      this.$http[httpMethod](api, { data: this.tempProduct }).then((response) => {
+        if (response.data.success) {
+          // this.$httpMessageState(response, stauts);
+
+          productComponent.hideModal();
+          this.getProducts(this.currentPage);
+        } else {
+          // this.$httpMessageState(response, stauts);
+        }
+      });
+    },
+    openDelProductModal(item) {
+      this.tempProduct = { ...item };
+      const delComponent = this.$refs.delModal;
+      delComponent.openModal();
+    },
+    delProduct() {
+      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/product/${this.tempProduct.id}`;
+      this.isLoading = true;
+      this.$http.delete(url).then((response) => {
+        if (response.data.success) {
+          // this.$httpMessageState(response, '刪除產品');
+          const delComponent = this.$refs.delModal;
+          delComponent.hideModal();
+          this.getProducts(this.currentPage);
+        } else {
+          // this.$httpMessageState(response, '刪除產品');
+        }
+      });
+    },
+  },
+  created() {
+    this.getProducts();
   },
 };
 </script>
