@@ -1,4 +1,5 @@
 import { createApp } from 'vue';
+import 'bootstrap';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import Loading from 'vue-loading-overlay';

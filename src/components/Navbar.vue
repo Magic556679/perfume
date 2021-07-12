@@ -8,7 +8,7 @@
     aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="collapse navbar-collapse flex justify-content-end" id="navbarNav" >
       <ul class="navbar-nav">
         <li class="nav-item">
           <router-link to="/admin/products" class="nav-link">產品</router-link>
@@ -20,7 +20,9 @@
           <router-link to="/admin/coupons" class="nav-link">優惠卷</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/login" class="nav-link">登出</router-link>
+          <router-link to="/admin/coupons" class="nav-link">
+          <i class="bi bi-cart-fill"></i>
+          </router-link>
         </li>
       </ul>
     </div>
