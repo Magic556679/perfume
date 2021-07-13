@@ -1,7 +1,8 @@
 <template>
 <nav class="navbar navbar-expand-lg navbar-dark bg-pink">
   <div class="container-fluid">
-    <a class="navbar-brand logoFont" href="#">Perfume</a>
+    <!-- <a class="navbar-brand logoFont" href="#">Perfume</a> -->
+    <router-link to="/" class="nav-link">Perfume</router-link>
     <button class="navbar-toggler" type="button"
     data-bs-toggle="collapse" data-bs-target="#navbarNav"
     aria-controls="navbarNav" aria-expanded="false"
@@ -36,5 +37,11 @@
   }
   .logoFont {
     font-family: "Arial Black",sans-serif;
+  }
+  a {
+    color: #fff;
+    &:hover {
+      color: #fff;
+    }
   }
 </style>

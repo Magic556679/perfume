@@ -1,5 +1,5 @@
 <template>
-  <NavbarViews></NavbarViews>
+  <!-- <NavbarViews></NavbarViews> -->
   <header>
     <div class="container h-100">
       <div class="row align-items-center h-100">
@@ -102,21 +102,21 @@
       </div>
     </div>
   </section>
-  <Footer></Footer>
+  <!-- <Footer></Footer> -->
 </template>
 
 <script>
-import NavbarViews from '@/components/Navbar.vue';
-import Footer from '@/components/Footer.vue';
+// import NavbarViews from '@/components/Navbar.vue';
+// import Footer from '@/components/Footer.vue';
 
 export default {
   data() {
     return {};
   },
-  components: {
-    NavbarViews,
-    Footer,
-  },
+  // components: {
+  //   NavbarViews,
+  //   Footer,
+  // },
 };
 </script>
 <style lang="scss">

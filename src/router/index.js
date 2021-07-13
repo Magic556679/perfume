@@ -4,7 +4,17 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('../views/Home.vue'),
+    component: () => import('../views/Frontdesk.vue'),
+    children: [
+      {
+        path: '',
+        component: () => import('../views/Home.vue'),
+      },
+      {
+        path: 'Products',
+        component: () => import('../views/Products.vue'),
+      },
+    ],
   },
   {
     path: '/admin',
