@@ -1,5 +1,8 @@
+<div>
+
+</div>
 <template>
-  <!-- <NavbarViews></NavbarViews> -->
+<div>
   <header>
     <div class="container h-100">
       <div class="row align-items-center h-100">
@@ -102,7 +105,8 @@
       </div>
     </div>
   </section>
-  <!-- <Footer></Footer> -->
+  <router-view></router-view>
+</div>
 </template>
 
 <script>
@@ -121,7 +125,7 @@ export default {
 </script>
 <style lang="scss">
   h2 {
-    color: #d03878;
+    color: #a43060;
   }
   span {
     color: #777777;
@@ -143,7 +147,7 @@ export default {
     .images {
     background-position: center;
     background-size: cover;
-    overflow: hidden;
+    // overflow: hidden;
    }
     .card img {
       height: 300px;
@@ -158,7 +162,7 @@ export default {
       background-attachment: fixed;
       height: 300px;
       h3 {
-        color:#d03878;
+        color:#a43060;
       }
     }
   };

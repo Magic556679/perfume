@@ -2,7 +2,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-pink">
   <div class="container-fluid">
     <!-- <a class="navbar-brand logoFont" href="#">Perfume</a> -->
-    <router-link to="/" class="nav-link">Perfume</router-link>
+    <!-- <router-link to="/" class="nav-link">Perfume</router-link> -->
+    <router-link to="/" class="nav-link navbar-brand logoFont fs-3">Perfume</router-link>
     <button class="navbar-toggler" type="button"
     data-bs-toggle="collapse" data-bs-target="#navbarNav"
     aria-controls="navbarNav" aria-expanded="false"
@@ -10,7 +11,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav fs-5">
         <li class="nav-item">
           <router-link to="/admin/products" class="nav-link">產品</router-link>
         </li>

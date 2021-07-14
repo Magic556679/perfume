@@ -1,8 +1,9 @@
 <template>
 <nav class="navbar navbar-expand-lg navbar-dark bg-pink">
   <div class="container-fluid">
-    <a class="navbar-brand logoFont" href="#">
-      <router-link to="/" class="nav-link">Perfume</router-link></a>
+    <!-- <a class="navbar-brand logoFont" href="#">
+      <router-link to="/" class="nav-link ">Perfume</router-link></a> -->
+      <router-link to="/" class="nav-link navbar-brand logoFont fs-3">Perfume</router-link>
     <button class="navbar-toggler" type="button"
     data-bs-toggle="collapse" data-bs-target="#navbarNav"
     aria-controls="navbarNav" aria-expanded="false"
@@ -10,26 +11,60 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse flex justify-content-end" id="navbarNav" >
-      <ul class="navbar-nav">
+      <ul class="navbar-nav fs-5">
         <li class="nav-item">
           <router-link to="/Products" class="nav-link">商品</router-link>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <router-link to="/Products/test1" class="nav-link">關於我們</router-link>
         </li>
         <li class="nav-item">
           <router-link to="/Products/test2" class="nav-link">優惠卷</router-link>
-        </li>
-        <li class="nav-item">
+        </li> -->
+        <li class="nav-item position-relative">
           <router-link to="/admin/coupons" class="nav-link">
           <i class="bi bi-cart-fill"></i>
           </router-link>
+          <!-- <div class="rounded-pill bg-danger
+          text-white position-absolute">{{ cart }}</div> -->
+          <div class="rounded-pill bg-danger
+          text-white position-absolute" v-if="cart.carts">{{ cart.carts.length }}</div>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 </template>
+<script>
+import emitter from '../assets/javascript/emitter';
+
+export default {
+  data() {
+    return {
+      cart: {},
+    };
+  },
+  methods: {
+    getCart() {
+      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`;
+      this.$http.get(url).then((res) => {
+        this.cart = res.data.data;
+        // let totleQty = 0;
+        // this.cart = res.data.data.carts.forEach((item) => {
+        //   totleQty += item.qty;
+        // });
+        // this.cart = totleQty;
+      });
+    },
+  },
+  mounted() {
+    this.getCart();
+    emitter.on('update-cart', () => {
+      this.getCart();
+    });
+  },
+};
+</script>
 <style lang="scss">
   .navbar-dark .navbar-nav .router-link-active:focus {
     color: #fff;
@@ -40,10 +75,17 @@
   .logoFont {
     font-family: "Arial Black",sans-serif;
   }
-  a {
+  .nav-link a {
     color: #fff;
     &:hover {
       color: #fff;
     }
+  }
+  .position-absolute {
+    top: 1px;
+    right: -2px;
+    width: 20px;
+    font-size: 0.5rem;
+    text-align: center;
   }
 </style>
