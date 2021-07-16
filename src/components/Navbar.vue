@@ -13,16 +13,13 @@
     <div class="collapse navbar-collapse flex justify-content-end" id="navbarNav" >
       <ul class="navbar-nav fs-5">
         <li class="nav-item">
-          <router-link to="/Products" class="nav-link">商品</router-link>
-        </li>
-        <!-- <li class="nav-item">
-          <router-link to="/Products/test1" class="nav-link">關於我們</router-link>
+          <router-link to="/" class="nav-link">首頁</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/Products/test2" class="nav-link">優惠卷</router-link>
-        </li> -->
+          <router-link to="/Products" class="nav-link">商品</router-link>
+        </li>
         <li class="nav-item position-relative">
-          <router-link to="/admin/coupons" class="nav-link">
+          <router-link to="/cart" class="nav-link">
           <i class="bi bi-cart-fill"></i>
           </router-link>
           <!-- <div class="rounded-pill bg-danger

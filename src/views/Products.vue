@@ -2,7 +2,7 @@
     <Loading :active="isLoading" :z-index="1060"></Loading>
     <div class="container mt-5">
         <div class="row">
-            <div class="col-3">
+            <div class="col-12 col-lg-3">
                 <div class="list-group">
                 <a href="#" class="list-group-item list-group-item-action"
                 @click.prevent="selectCategory = item">全部商品</a>
@@ -15,7 +15,7 @@
                 >
                 </div>
             </div>
-            <div class="col-9">
+            <div class="col-12 col-lg-9">
               <div class="row">
                 <div class="col-md-3" v-for="product in filterProducts" :key="product.id">
                     <div class="card border-0 mb-4 position-relative position-relative">
@@ -25,14 +25,22 @@
                             style="right: 16px; top: 16px"></i>
                         </a>
                         <div class="card-body p-0">
-                            <h4 class="mb-0 mt-3 text-dark">
-                            <router-link :to="`/product/${product.id}`">
-                            {{ product.title }}</router-link>
-                            </h4>
-                            <p class="card-text text-muted mb-0">{{ product.content }}</p>
-                            <p class="text-muted mt-3">NT$ {{ product.price }}</p>
-                            <button type="button" class="btn btn-dark btn-pink round-0 py-2"
+                            <h4 class="mb-0 mt-3 text-dark">{{ product.title }}</h4>
+                            <!-- <p class="card-text text-muted mb-0">{{ product.content }}</p> -->
+                            <p class="text-muted mt-3">NT$ {{ $toCurrency(product.price) }}</p>
+                            <div class="d-flex justify-content-between">
+                              <button type="button" class="btn btn-dark btn-pink
+                              round-0 py-2"
                             @click="addToCart(product.id)">加入購物車</button>
+                            <!-- <button type="button" class="btn btn-secondary round-0 py-2">
+                                <router-link :to="`/product/${product.id}`"
+                                style="text-decoration:none">查看更多</router-link>
+                            </button> -->
+                                <router-link :to="`/product/${product.id}`"
+                                style="text-decoration:none"><button type="button"
+                                class="btn btn-secondary round-0 py-2">查看更多</button>
+                                </router-link>
+                            </div>
                             <!-- <button
                             type="button"
                             @click="addMyFavorite(product)"
