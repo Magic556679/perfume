@@ -40,7 +40,7 @@
                     <input type="text" class="form-control border-0 text-center
                     my-auto shadow-none bg-light"
                     placeholder="" aria-label="Example text with button addon"
-                    aria-describedby="button-addon1" v-model="qty">
+                    aria-describedby="button-addon1" v-model="qty" disabled>
                     <div class="input-group-append">
                       <button class="btn btn-outline-dark border-0 py-2" type="button"
                       @click="cutNum">
@@ -132,8 +132,9 @@ export default {
         product_id: this.product.id,
         qty: this.qty,
       };
-      this.$http.post(url, { data: cart }).then(() => {
+      this.$http.post(url, { data: cart }).then((res) => {
         emitter.emit('update-cart');
+        this.$swal(res.data.message);
       });
     },
     addNum() {

@@ -5,7 +5,8 @@
             <div class="col-md-8">
                 <div class="d-flex justify-content-between">
                   <button type="button" class="
-                  btn-pink rounded py-2 shadow-none" style="border:none">繼續購物</button>
+                  btn-pink rounded py-2 shadow-none" style="border:none"
+                  @click="$router.push('/products')">繼續購物</button>
                   <button type="button" class="
                   btn-pink rounded py-2 shadow-none" style="border:none"
                   @click="$router.push('/order')">填寫訂單</button>
@@ -105,11 +106,15 @@
                  </div>
             </div>
         </div>
-        <div v-else><h2 class="text-center">購物車少於1</h2></div>
+        <div v-else class="row d-flex align-items-center justify-content-center">
+          <div class="col-md-8 text-center">
+            <h2>購物車沒有商品</h2>
+            <button type="button" class="
+            btn-pink rounded py-2 px-3 shadow-none mt-5"
+            style="border:none" @click="$router.push('/products')">前往購物</button>
+          </div>
+        </div>
     </div>
-    <!-- <div class="container" v-if="cart.carts">
-        <div v-if="cart.carts.length == 0"><h2>購物車少於1</h2></div>
-    </div> -->
 </template>
 <script>
 import emitter from '../assets/javascript/emitter';
@@ -132,7 +137,6 @@ export default {
       this.$http.get(url).then((res) => {
         this.cart = res.data.data;
         this.isLoading = false;
-        console.log(res);
       });
     },
     removeCartItem(id) {
@@ -166,8 +170,6 @@ export default {
   },
   mounted() {
     this.getCarts();
-    // this.coupon();
-    console.log(this.couponNum.code);
   },
 };
 </script>
@@ -179,5 +181,15 @@ export default {
   }
   .min {
     min-height: 500px;
+  }
+  @media screen and (max-width:768px) {
+    .min {
+    min-height: 768px;
+    }
+  }
+  @media screen and (max-width:767px) {
+    .min {
+    min-height: 600px;
+    }
   }
 </style>

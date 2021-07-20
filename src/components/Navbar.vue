@@ -16,7 +16,7 @@
           <router-link to="/" class="nav-link">首頁</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/Products" class="nav-link">商品</router-link>
+          <router-link to="/products" class="nav-link">商品</router-link>
         </li>
         <li class="nav-item position-relative">
           <router-link to="/cart" class="nav-link">
@@ -84,5 +84,17 @@ export default {
     width: 20px;
     font-size: 0.5rem;
     text-align: center;
+  }
+  @media screen and (max-width: 768px) {
+    .position-absolute {
+      top: 0;
+      left: 12px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .position-absolute {
+      top: 0;
+      left: 12px;
+    }
   }
 </style>

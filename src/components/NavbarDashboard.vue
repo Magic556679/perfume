@@ -22,13 +22,26 @@
           <router-link to="/admin/coupons" class="nav-link">優惠卷</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/login" class="nav-link">登出</router-link>
+          <router-link to="/login" class="nav-link" @click="signout()">登出</router-link>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 </template>
+<script>
+export default {
+  data() {
+    return {};
+  },
+  methods: {
+    signout() {
+      document.cookie = 'hexToken=;expires=;';
+      // this.$router.push('/login');
+    },
+  },
+};
+</script>
 <style lang="scss">
   .navbar-dark .navbar-nav .router-link-active:focus {
     color: #fff;

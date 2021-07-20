@@ -10,11 +10,11 @@ const routes = [
         component: () => import('../views/Home.vue'),
       },
       {
-        path: 'Products',
+        path: 'products',
         component: () => import('../views/Products.vue'),
       },
       {
-        path: 'Product/:id',
+        path: 'product/:id',
         component: () => import('../views/Product.vue'),
       },
       {
@@ -25,6 +25,10 @@ const routes = [
         path: 'order',
         component: () => import('../views/Order.vue'),
       },
+      {
+        path: 'check',
+        component: () => import('../views/Check.vue'),
+      },
     ],
   },
   {
@@ -32,7 +36,7 @@ const routes = [
     component: () => import('../views/Dashboard.vue'),
     children: [
       {
-        path: 'products',
+        path: '',
         component: () => import('../views/Dashboard/Products.vue'),
       },
       {
@@ -46,8 +50,16 @@ const routes = [
     ],
   },
   {
-    path: '/Login',
+    path: '/login',
     component: () => import('../views/Login.vue'),
+  },
+  {
+    path: '/payment',
+    component: () => import('../views/Payment.vue'),
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    component: () => import('../views/NotFound.vue'),
   },
 ];
 

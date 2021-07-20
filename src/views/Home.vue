@@ -89,7 +89,7 @@
           </div>
         </div>
         <div class="col-md-6">
-          <img src="https://i.imgur.com/6ZoPWI1.png" class="img-fluid">
+          <img src="https://i.imgur.com/7pqdNYg.png" class="img-fluid">
         </div>
       </div>
       <div class="row mt-5 flex-row-reverse ">

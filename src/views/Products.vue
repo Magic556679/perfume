@@ -1,6 +1,6 @@
 <template>
     <Loading :active="isLoading" :z-index="1060"></Loading>
-    <div class="container mt-5">
+    <div class="container min mt-5">
         <div class="row">
             <div class="col-12 col-lg-3">
                 <div class="list-group">
@@ -79,7 +79,6 @@ export default {
         this.products = res.data.products;
         this.getCategories();
         this.isLoading = false;
-        console.log(res);
       });
     },
     getCategories() {
@@ -97,7 +96,7 @@ export default {
       };
       this.$http.post(url, { data: cart }).then((res) => {
         emitter.emit('update-cart');
-        console.log(res);
+        this.$swal(res.data.message);
       });
     },
   },
@@ -119,5 +118,7 @@ a {
   height: 300px;
   object-fit: cover;
 }
-
+.min {
+    min-height: 500px;
+}
 </style>

@@ -21,7 +21,7 @@ export default {
         if (res.data.success) {
           this.status = true;
         } else {
-          this.$router.push('/');
+          this.$router.push('/login');
         }
       });
   },
