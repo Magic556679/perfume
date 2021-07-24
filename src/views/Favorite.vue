@@ -1,22 +1,8 @@
 <template>
     <Loading :active="isLoading" :z-index="1060"></Loading>
-    <div class="container min mt-5" id="products">
-        <div class="row">
-            <div class="col-12 col-lg-3">
-                <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action"
-                @click.prevent="selectCategory = item">全部商品</a>
-                <a  href="#"
-                    v-for="item in categories"
-                    :key="item"
-                    class="list-group-item list-group-item-action"
-                    @click.prevent="selectCategory = item"
-                    >{{ item }}</a
-                >
-                </div>
-            </div>
-            <div class="col-12 col-lg-9">
-              <div class="row">
+    <div>
+        <div class="container min mt-5" id="favorite">
+            <div class="row" v-if="this.myFavorite.length > 0">
                 <div class="col-md-3" v-for="product in filterProducts" :key="product.id">
                     <div class="card border-0 mb-4 position-relative">
                         <img :src="product.imageUrl" class="card-img-top rounded-0" alt="..." />
@@ -43,7 +29,14 @@
                         </div>
                     </div>
                 </div>
-              </div>
+            </div>
+            <div v-else class="row d-flex align-items-center justify-content-center">
+                <div class="col-md-8 text-center">
+                    <h2>我的最愛無商品</h2>
+                    <button type="button" class="
+                    btn-pink rounded py-2 px-3 shadow-none mt-5"
+                    style="border:none" @click="$router.push('/products')">前往購物</button>
+                </div>
             </div>
         </div>
     </div>
@@ -65,13 +58,10 @@ export default {
   data() {
     return {
       products: [],
-      product: {},
-      categories: [],
-      selectCategory: '',
-      currentPage: 1,
-      isLoading: false,
       myFavorite: storageMethods.get() || [],
-      FavoriteNum: 0,
+      // localNum: '',
+      // Favorite: [],
+      isLoading: false,
     };
   },
   methods: {
@@ -79,17 +69,15 @@ export default {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`;
       this.isLoading = true;
       this.$http.get(url).then((res) => {
+        // const localtest = JSON.parse(localStorage.getItem('hexFavorite'));
         this.products = res.data.products;
-        this.getCategories();
         this.isLoading = false;
+        // localtest.forEach((num) => {
+        //   const test = this.products.filter((item) => item.id === num);
+        //   this.Favorite.push(test);
+        //   this.array = [...this.Favorite];
+        // });
       });
-    },
-    getCategories() {
-      const categories = new Set();
-      this.products.forEach((item) => {
-        categories.add(item.category);
-      });
-      this.categories = [...categories];
     },
     addToCart(id, qty = 1) {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`;
@@ -117,7 +105,13 @@ export default {
   },
   computed: {
     filterProducts() {
-      return this.products.filter((item) => item.category.match(this.selectCategory));
+      const arr = [];
+      this.products.forEach((item) => {
+        if (this.myFavorite.includes(item.id)) {
+          arr.push(item);
+        }
+      });
+      return arr;
     },
   },
   mounted() {
@@ -126,20 +120,14 @@ export default {
 };
 </script>
 <style lang="scss">
-a {
-  color: #000;
-}
 .card img {
   height: 300px;
   object-fit: cover;
 }
-.min {
-    min-height: 500px;
+#favorite .active {
+color: red !important;
 }
-#products .active {
-  color: red !important;
-}
-#products .bi-suit-heart-fill {
+#favorite .bi-suit-heart-fill {
   color: #fff;
 }
 </style>

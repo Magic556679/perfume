@@ -29,6 +29,10 @@ const routes = [
         path: 'check',
         component: () => import('../views/Check.vue'),
       },
+      {
+        path: 'favorite',
+        component: () => import('../views/Favorite.vue'),
+      },
     ],
   },
   {

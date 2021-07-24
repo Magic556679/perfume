@@ -26,8 +26,11 @@
             <h2 class="fw-bold h1 mb-3">{{ product.title }}</h2>
             <p>{{ product.content }}</p>
             <p>{{ product.description }}</p>
-            <p class="mb-0 text-muted"><del>NT${{ product.origin_price }}</del></p>
-            <p class="h4 fw-bold ">NT${{ product.price }}</p>
+            <p class="mb-0 text-muted"
+            v-if="productMoney.product">
+            <del>NT${{ $toCurrency(productMoney.product.origin_price) }}</del></p>
+            <p class="h4 fw-bold"
+            v-if="productMoney.product">NT${{ $toCurrency(productMoney.product.price) }}</p>
             <div class="row align-items-center">
                 <div class="col-6">
                 <div class="input-group my-3 bg-secondary rounded">
@@ -71,10 +74,16 @@
             }'
             :breakpoints="swiperOptions.breakpoints">
         <swiper-slide v-for="image in productsAll" :key="image">
+            <!-- <router-link :to="`/product/${image.id}`">
+              <button type="button"
+                class="btn btn-secondary
+                round-0 py-2">查看更多
+              </button>
+            </router-link> -->
             <img :src="image.imageUrl">
             <div class="px-5">
                 <h3 style="white-space:nowrap;">{{ image.title }}</h3>
-                <h4>NT${{  $toCurrency(image.price) }}</h4>
+                <h4>NT${{ $toCurrency(image.price) }}</h4>
             </div>
         </swiper-slide>
     </swiper>
@@ -93,6 +102,7 @@ export default {
   data() {
     return {
       product: {},
+      productMoney: {},
       productsAll: {},
       id: '',
       qty: 1,
@@ -117,6 +127,7 @@ export default {
       this.isLoading = true;
       this.$http.get(url).then((res) => {
         this.product = res.data.product;
+        this.productMoney = res.data; //  解決千分號無法顯示
         this.isLoading = false;
       });
     },

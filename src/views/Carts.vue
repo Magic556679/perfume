@@ -108,7 +108,7 @@
         </div>
         <div v-else class="row d-flex align-items-center justify-content-center">
           <div class="col-md-8 text-center">
-            <h2>購物車沒有商品</h2>
+            <h2>購物車無商品</h2>
             <button type="button" class="
             btn-pink rounded py-2 px-3 shadow-none mt-5"
             style="border:none" @click="$router.push('/products')">前往購物</button>
@@ -136,6 +136,7 @@ export default {
       this.isLoading = true;
       this.$http.get(url).then((res) => {
         this.cart = res.data.data;
+        console.log(res);
         this.isLoading = false;
       });
     },

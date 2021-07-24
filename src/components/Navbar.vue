@@ -19,6 +19,15 @@
           <router-link to="/products" class="nav-link">商品</router-link>
         </li>
         <li class="nav-item position-relative">
+          <router-link to="/favorite" class="nav-link">
+          <i class="bi bi-suit-heart-fill"></i>
+          </router-link>
+          <!-- <div class="rounded-pill bg-danger
+          text-white position-absolute">{{ cart }}</div> -->
+          <div class="rounded-pill bg-danger
+          text-white position-absolute" v-if="cart.carts">{{ newNum }}</div>
+        </li>
+        <li class="nav-item position-relative">
           <router-link to="/cart" class="nav-link">
           <i class="bi bi-cart-fill"></i>
           </router-link>
@@ -35,10 +44,19 @@
 <script>
 import emitter from '../assets/javascript/emitter';
 
+const storageMethods = {
+  get() {
+    return JSON.parse(localStorage.getItem('hexFavorite'));
+  },
+};
+
 export default {
   data() {
     return {
       cart: {},
+      myFavorite: storageMethods.get() || [],
+      FavoriteNum: 0,
+      newNum: 0,
     };
   },
   methods: {
@@ -46,18 +64,23 @@ export default {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`;
       this.$http.get(url).then((res) => {
         this.cart = res.data.data;
-        // let totleQty = 0;
-        // this.cart = res.data.data.carts.forEach((item) => {
-        //   totleQty += item.qty;
-        // });
-        // this.cart = totleQty;
       });
+    },
+    getmyFavorite() {
+      this.FavoriteNum = this.myFavorite.length;
+      this.newNum = this.myFavorite.length;
     },
   },
   mounted() {
     this.getCart();
+    this.getmyFavorite();
     emitter.on('update-cart', () => {
       this.getCart();
+    });
+    emitter.on('favorite-num', (num) => {
+      this.getmyFavorite();
+      this.newNum = num;
+      // this.FavoriteNum = num;
     });
   },
 };
@@ -66,9 +89,9 @@ export default {
   .navbar-dark .navbar-nav .router-link-active:focus {
     color: #fff;
   }
-  .navbar-dark .navbar-nav .router-link-active {
-    color: #fff;
-  }
+  // .navbar-dark .navbar-nav .router-link-active {
+  //   color: #fff;
+  // }
   .logoFont {
     font-family: "Arial Black",sans-serif;
   }
