@@ -1,5 +1,16 @@
 <template>
     <Loading :active="isLoading" :z-index="1060"></Loading>
+    <header>
+    <div class="container h-100">
+      <div class="row align-items-center justify-content-center h-100">
+        <div class="col-md-6 col-12">
+          <div class="headerTitle">
+            <h1 class="text-center">商品</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
     <div class="container min mt-5" id="products">
         <div class="row">
             <div class="col-12 col-lg-3">
@@ -106,9 +117,17 @@ export default {
       // this.myFavorite.push(item.id);
       if (this.myFavorite.includes(item.id)) {
         this.myFavorite.splice(this.myFavorite.indexOf(item.id), 1);
-        // emitter.emit('favorite-num', JSON.parse(localStorage.getItem('hexFavorite')));
+        this.$swal({
+          title: '已從我的最愛移除',
+          icon: 'error',
+        });
       } else {
         this.myFavorite.push(item.id);
+        console.log('2');
+        this.$swal({
+          title: '已加入我的最愛',
+          icon: 'success',
+        });
       }
       storageMethods.save(this.myFavorite);
       this.FavoriteNum = this.myFavorite.length;
@@ -125,9 +144,25 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 a {
   color: #000;
+}
+header{
+    background-image: url('https://i.imgur.com/GiMm870.jpg');
+    background-position: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    // height: 100vh;
+    height: 400px;
+    // margin-top: -56px;
+    .headerTitle {
+      padding: 30px;
+      background: rgba(219, 212, 212, 0.5);
+    }
+    h1 {
+    color: #000;
+  }
 }
 .card img {
   height: 300px;

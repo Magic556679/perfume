@@ -1,6 +1,17 @@
 <template>
     <Loading :active="isLoading" :z-index="1060"></Loading>
-    <div>
+    <div id="favorite">
+        <header>
+          <div class="container h-100">
+            <div class="row align-items-center justify-content-center h-100">
+              <div class="col-md-6 col-12">
+                <div class="headerTitle">
+                  <h1 class="text-center">收藏清單</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
         <div class="container min mt-5" id="favorite">
             <div class="row" v-if="this.myFavorite.length > 0">
                 <div class="col-md-3" v-for="product in filterProducts" :key="product.id">
@@ -32,7 +43,7 @@
             </div>
             <div v-else class="row d-flex align-items-center justify-content-center">
                 <div class="col-md-8 text-center">
-                    <h2>我的最愛無商品</h2>
+                    <h2>收藏清單無商品</h2>
                     <button type="button" class="
                     btn-pink rounded py-2 px-3 shadow-none mt-5"
                     style="border:none" @click="$router.push('/products')">前往購物</button>
@@ -91,12 +102,18 @@ export default {
       });
     },
     addMyFavorite(item) {
-      // this.myFavorite.push(item.id);
       if (this.myFavorite.includes(item.id)) {
         this.myFavorite.splice(this.myFavorite.indexOf(item.id), 1);
-        // emitter.emit('favorite-num', JSON.parse(localStorage.getItem('hexFavorite')));
+        this.$swal({
+          title: '已從收藏移除',
+          icon: 'error',
+        });
       } else {
         this.myFavorite.push(item.id);
+        this.$swal({
+          title: '已加入收藏',
+          icon: 'success',
+        });
       }
       storageMethods.save(this.myFavorite);
       this.FavoriteNum = this.myFavorite.length;
@@ -120,6 +137,22 @@ export default {
 };
 </script>
 <style lang="scss">
+#favorite header{
+    background-image: url('https://i.imgur.com/kkQT8YK.jpg');
+    background-position: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    // height: 100vh;
+    height: 400px;
+    // margin-top: -56px;
+    .headerTitle {
+      padding: 30px;
+      background: rgba(219, 212, 212, 0.5);
+    }
+    h1 {
+    color: #000;
+    }
+}
 .card img {
   height: 300px;
   object-fit: cover;

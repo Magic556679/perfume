@@ -1,6 +1,3 @@
-<div>
-
-</div>
 <template>
 <div>
   <header>
@@ -18,9 +15,15 @@
   <section>
     <div class="container">
       <div class="row">
-        <div class="col-12 text-center">
+        <div class="col-lg-7 text-center mx-auto">
           <h3>濃香水系列</h3>
-          <span>味道的濃郁程度與香精接近，不過持香時間稍短一點，大約為5小時左右。這類型香水很百搭，不管是重要場合還是日常都很適合。</span>
+          <h4 class="mt-5"><i class="bi bi-pin-angle-fill"></i> 價格差異</h4>
+          <span>香精濃度的不同反應在價格差異。因為原料非常昂貴，尤其在純天然的情況下。因此使用的原料萃取物越少，最終產品的價格就越便宜。這就是為什麼古龍水通常更便宜。</span>
+          <h4 class="mt-5"><i class="bi bi-pin-angle-fill"></i> 香味持久度</h4>
+          <span>濃香水是所有序列最持久的。濃度較低的古龍水能產生新鮮的效果，並具有淡淡的香氣，但香氣在一到兩個小時後消失，而淡香水則持續三到四個小時。
+            相比之下，淡香水和香水提取物的氣味物質含量更高。香精通常能持續長達6個小時。因為這類型香氛非常持香且味道濃厚，
+            因此每次使用只需沾點些許在重點部分即可～適合夜晚或是出席重要場合時使用！</span>
+
         </div>
       </div>
       <div class="row mt-5">
@@ -77,15 +80,16 @@
         <div class="col-12 text-center">
           <h3>香水有些分類呢？</h3>
           <span>香水不只可以代表一個人的風格，甚至還會影響他人對你的印象，
-          提供以下兩種最常見的香水種類，</span>
+          提供以下兩種最常見的香水種類。</span>
         </div>
       </div>
       <div class="row mt-5">
         <div class="col-md-6 d-flex align-items-center">
           <div>
-            <h3>-香精-</h3>
-            <p>香水的價格跟香精含量息息相關，香精濃度越高，價格也越高～而香精類型的香水濃度在20%以上，
-              是香水所有種類中濃度最高的，持香時間也最久，大約能留香7小時以上</p>
+            <h3>清淡香水(Eau de Toilette)</h3>
+            <p>含5％至15％萃取物的淡香水不像它的兄弟姐妹一樣持久，香味通常只持續2到3個小時。</p>
+            <p>但當你不希望辦公室同事整天呼吸著你濃烈的香水味時，淡香水可能是最理想的工作選擇。
+              或者，您可以隨時使用這些技巧來延長香水的使用壽命。</p>
           </div>
         </div>
         <div class="col-md-6">
@@ -95,8 +99,9 @@
       <div class="row mt-5 flex-row-reverse ">
         <div class="col-md-6 d-flex align-items-center">
           <div>
-            <h3>-淡香精-</h3>
-            <p>不管是重要場合還是日常都很適合，香調層次也會隨時間變化得比較明顯，維持時間大約為5小時左右</p>
+            <h3>古龍水(Eau de Cologne）</h3>
+            <p>很多人對古龍水的印象就是男生使用的香水，它們通常主要由柑橘類水果和芳香植物組成，氣味較淡，沒有強烈的基調，他的濃度只有3-5％，持香時間也只有1-2個小時。</p>
+            <p>味道比較輕盈，很適合運動前後、沐浴後使用。它的香調變化比較不明顯，不管男女生都可以使用，也很適合當作入門香氛類型！</p>
           </div>
         </div>
         <div class="col-md-6">
@@ -110,22 +115,36 @@
 </template>
 
 <script>
-// import NavbarViews from '@/components/Navbar.vue';
-// import Footer from '@/components/Footer.vue';
 
 export default {
   data() {
     return {};
   },
-  // components: {
-  //   NavbarViews,
-  //   Footer,
-  // },
+  methods: {
+    couponsTime() {
+      setTimeout(() => {
+        this.$swal({
+          title: '領取優惠券',
+          text: 'PerfumeOff',
+          icon: false,
+          showConfirmButton: true,
+          timer: 10000,
+          imageUrl: 'https://i.imgur.com/21uzzAF.jpg',
+        });
+      }, 3000);
+    },
+  },
+  mounted() {
+    this.couponsTime();
+  },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
   h2 {
     color: #a43060;
+  }
+  h4 {
+    font-size: 1.2rem;
   }
   span {
     color: #777777;
@@ -166,4 +185,11 @@ export default {
       }
     }
   };
+  .swal2-shown {
+    .swal2-popup {
+    background-image: url('https://i.imgur.com/yPQZs6u.jpg') !important;
+    background-position: center;
+    background-size: cover;
+    }
+  }
 </style>

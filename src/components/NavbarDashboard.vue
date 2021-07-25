@@ -11,7 +11,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav fs-5">
+      <ul class="navbar-nav fs-7">
         <li class="nav-item">
           <router-link to="/admin/products" class="nav-link">產品</router-link>
         </li>
@@ -43,6 +43,9 @@ export default {
 };
 </script>
 <style lang="scss">
+  .fs-7 {
+    font-size: 1.2rem;
+  }
   .navbar-dark .navbar-nav .router-link-active:focus {
     color: #fff;
   }

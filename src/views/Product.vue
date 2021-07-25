@@ -74,13 +74,13 @@
             }'
             :breakpoints="swiperOptions.breakpoints">
         <swiper-slide v-for="image in productsAll" :key="image">
-            <!-- <router-link :to="`/product/${image.id}`">
-              <button type="button"
-                class="btn btn-secondary
-                round-0 py-2">查看更多
-              </button>
-            </router-link> -->
-            <img :src="image.imageUrl">
+              <!-- <img :src="image.imageUrl"
+              @click="$router.push(`/product/${image.id}`)"
+              style="cursor: pointer;"> -->
+              <router-link :to="`/product/${image.id}`"
+                style="text-decoration:none">
+                <img :src="image.imageUrl" @click="gotoPages()">
+              </router-link>
             <div class="px-5">
                 <h3 style="white-space:nowrap;">{{ image.title }}</h3>
                 <h4>NT${{ $toCurrency(image.price) }}</h4>
@@ -155,6 +155,23 @@ export default {
       if (this.qty > 1) {
         this.qty -= 1;
       }
+    },
+    gotoPages() {
+      this.id = this.$route.params.id;
+    },
+  },
+  watch: {
+    // id(o, n) {
+    //   // console.log(n, o);
+    //   // window.location.reload();
+    //   // if (n !== this.id) {
+    //   //   window.location.reload();
+    //   // }
+    //   // console.log(n);
+    //   // console.log(this.id);
+    // },
+    $route() {
+      window.location.reload();
     },
   },
   mounted() {

@@ -11,19 +11,20 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse flex justify-content-end" id="navbarNav" >
-      <ul class="navbar-nav fs-5">
+      <ul class="navbar-nav fs-7">
         <li class="nav-item">
           <router-link to="/" class="nav-link">首頁</router-link>
         </li>
         <li class="nav-item">
           <router-link to="/products" class="nav-link">商品</router-link>
         </li>
+        <li class="nav-item">
+          <router-link to="/about" class="nav-link">關於我們</router-link>
+        </li>
         <li class="nav-item position-relative">
           <router-link to="/favorite" class="nav-link">
           <i class="bi bi-suit-heart-fill"></i>
           </router-link>
-          <!-- <div class="rounded-pill bg-danger
-          text-white position-absolute">{{ cart }}</div> -->
           <div class="rounded-pill bg-danger
           text-white position-absolute" v-if="cart.carts">{{ newNum }}</div>
         </li>
@@ -89,6 +90,9 @@ export default {
   .navbar-dark .navbar-nav .router-link-active:focus {
     color: #fff;
   }
+  .fs-7 {
+    font-size: 1.2rem;
+  }
   // .navbar-dark .navbar-nav .router-link-active {
   //   color: #fff;
   // }
@@ -103,7 +107,8 @@ export default {
   }
   .position-absolute {
     top: 1px;
-    right: -2px;
+    // right: -2px;
+    right: -5px;
     width: 20px;
     font-size: 0.5rem;
     text-align: center;
