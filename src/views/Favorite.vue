@@ -1,5 +1,13 @@
 <template>
-    <Loading :active="isLoading" :z-index="1060"></Loading>
+    <!-- <Loading :active="isLoading" :z-index="1060"></Loading> -->
+    <Loading :active="isLoading" :z-index="1060">
+      <div class="loadingio-spinner-spin-rvvfjvnp9z"><div class="ldio-hqeuxluc1v">
+        <div><div></div></div><div><div></div></div><div><div></div></div><div>
+        <div></div></div><div><div></div></div><div><div></div></div><div><div>
+        </div></div><div><div></div></div>
+        </div>
+      </div>
+    </Loading>
     <div id="favorite">
         <header>
           <div class="container h-100">

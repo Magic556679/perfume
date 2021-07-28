@@ -1,5 +1,13 @@
 <template>
-  <Loading :active="isLoading" :z-index="1060"></Loading>
+  <!-- <Loading :active="isLoading" :z-index="1060"></Loading> -->
+  <Loading :active="isLoading" :z-index="1060">
+      <div class="loadingio-spinner-spin-rvvfjvnp9z"><div class="ldio-hqeuxluc1v">
+        <div><div></div></div><div><div></div></div><div><div></div></div><div>
+        <div></div></div><div><div></div></div><div><div></div></div><div><div>
+        </div></div><div><div></div></div>
+        </div>
+      </div>
+  </Loading>
   <div class="container mt-5">
     <div class="row align-items-center mb-5">
             <div class="col-md-7">
@@ -161,15 +169,6 @@ export default {
     },
   },
   watch: {
-    // id(o, n) {
-    //   // console.log(n, o);
-    //   // window.location.reload();
-    //   // if (n !== this.id) {
-    //   //   window.location.reload();
-    //   // }
-    //   // console.log(n);
-    //   // console.log(this.id);
-    // },
     $route() {
       window.location.reload();
     },

@@ -1,5 +1,12 @@
 <template>
-    <Loading :active="isLoading" :z-index="1060"></Loading>
+    <Loading :active="isLoading" :z-index="1060">
+      <div class="loadingio-spinner-spin-rvvfjvnp9z"><div class="ldio-hqeuxluc1v">
+        <div><div></div></div><div><div></div></div><div><div></div></div><div>
+        <div></div></div><div><div></div></div><div><div></div></div><div><div>
+        </div></div><div><div></div></div>
+        </div>
+      </div>
+    </Loading>
     <header>
     <div class="container h-100">
       <div class="row align-items-center justify-content-center h-100">
@@ -123,7 +130,6 @@ export default {
         });
       } else {
         this.myFavorite.push(item.id);
-        console.log('2');
         this.$swal({
           title: '已加入我的最愛',
           icon: 'success',

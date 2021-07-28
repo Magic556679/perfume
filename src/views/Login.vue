@@ -37,8 +37,6 @@ export default {
           document.cookie = `hexToken=${token};expires=${new Date(expired)};`;
           this.$router.push('/admin/');
         } else {
-          console.log('錯誤');
-          console.log(res);
           this.$swal({
             title: res.data.message,
             icon: 'error',

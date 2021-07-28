@@ -10,6 +10,10 @@
           </div>
         </div>
       </div>
+      <div class="position-absolute arrow" style="bottom: 20px;left: 50%;z-index: 10 ;
+      font-size: 3rem;color: #a43060;">
+        <i class="bi bi-arrow-down-circle-fill"></i>
+      </div>
     </div>
   </header>
   <section>
@@ -115,7 +119,6 @@
 </template>
 
 <script>
-
 export default {
   data() {
     return {};
@@ -160,6 +163,20 @@ export default {
       padding: 30px;
       background: rgba(219, 212, 212, 0.5);
     }
+    .arrow {
+      animation: arrow 2s infinite;
+    }
+    @keyframes arrow {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-30px);
+      }
+      60% {
+        transform: translateY(-15px);
+      }
+    }
   }
   section {
     padding: 5rem 0;
@@ -183,13 +200,6 @@ export default {
       h3 {
         color:#a43060;
       }
-    }
-  };
-  .swal2-shown {
-    .swal2-popup {
-    background-image: url('https://i.imgur.com/yPQZs6u.jpg') !important;
-    background-position: center;
-    background-size: cover;
     }
   }
 </style>

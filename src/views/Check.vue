@@ -1,5 +1,13 @@
 <template>
-    <Loading :active="isLoading" :z-index="1060"></Loading>
+    <!-- <Loading :active="isLoading" :z-index="1060"></Loading> -->
+    <Loading :active="isLoading" :z-index="1060">
+      <div class="loadingio-spinner-spin-rvvfjvnp9z"><div class="ldio-hqeuxluc1v">
+        <div><div></div></div><div><div></div></div><div><div></div></div><div>
+        <div></div></div><div><div></div></div><div><div></div></div><div><div>
+        </div></div><div><div></div></div>
+        </div>
+      </div>
+     </Loading>
     <div class="container mt-5" id="check">
         <div class="row justify-content-center">
           <div class="col-12 col-lg-6">
@@ -111,14 +119,11 @@ export default {
       this.axios.get(url).then((res) => {
         [this.user] = res.data.orders;
         this.products = Object.values(this.user.products);
-        // console.log(this.user);
-        // console.log(this.user.id);
       });
     },
     pay() {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/pay/${this.user.id}`;
-      this.axios.post(url).then((res) => {
-        console.log(res);
+      this.axios.post(url).then(() => {
         this.$router.push('/payment');
       });
     },

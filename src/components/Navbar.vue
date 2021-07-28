@@ -1,9 +1,7 @@
 <template>
-<nav class="navbar navbar-expand-lg navbar-dark bg-pink">
+<nav class="navbar navbar-expand-lg navbar-dark bg-pink" id="nav">
   <div class="container-fluid">
-    <!-- <a class="navbar-brand logoFont" href="#">
-      <router-link to="/" class="nav-link ">Perfume</router-link></a> -->
-      <router-link to="/" class="nav-link navbar-brand logoFont fs-3">Perfume</router-link>
+    <router-link to="/" class="nav-link navbar-brand logoFont fs-3">Perfume</router-link>
     <button class="navbar-toggler" type="button"
     data-bs-toggle="collapse" data-bs-target="#navbarNav"
     aria-controls="navbarNav" aria-expanded="false"
@@ -26,16 +24,18 @@
           <i class="bi bi-suit-heart-fill"></i>
           </router-link>
           <div class="rounded-pill bg-danger
-          text-white position-absolute" v-if="cart.carts">{{ newNum }}</div>
+          text-white position-absolute" v-if="this.newNum > 0">{{ newNum }}</div>
         </li>
         <li class="nav-item position-relative">
           <router-link to="/cart" class="nav-link">
-          <i class="bi bi-cart-fill"></i>
+            <i class="bi bi-cart-fill"></i>
           </router-link>
-          <!-- <div class="rounded-pill bg-danger
-          text-white position-absolute">{{ cart }}</div> -->
-          <div class="rounded-pill bg-danger
-          text-white position-absolute" v-if="cart.carts">{{ cart.carts.length }}</div>
+          <div v-if="cart.carts">
+            <div class="rounded-pill bg-danger
+            text-white position-absolute"
+            v-if="this.cart.carts.length > 0">{{ cart.carts.length }}
+            </div>
+          </div>
         </li>
       </ul>
     </div>
@@ -81,7 +81,6 @@ export default {
     emitter.on('favorite-num', (num) => {
       this.getmyFavorite();
       this.newNum = num;
-      // this.FavoriteNum = num;
     });
   },
 };
@@ -93,9 +92,6 @@ export default {
   .fs-7 {
     font-size: 1.2rem;
   }
-  // .navbar-dark .navbar-nav .router-link-active {
-  //   color: #fff;
-  // }
   .logoFont {
     font-family: "Arial Black",sans-serif;
   }
@@ -105,7 +101,7 @@ export default {
       color: #fff;
     }
   }
-  .position-absolute {
+  #nav .position-absolute {
     top: 1px;
     // right: -2px;
     right: -5px;
@@ -114,13 +110,13 @@ export default {
     text-align: center;
   }
   @media screen and (max-width: 768px) {
-    .position-absolute {
+    #nav .position-absolute {
       top: 0;
       left: 12px;
     }
   }
   @media screen and (max-width: 767px) {
-    .position-absolute {
+    #nav .position-absolute {
       top: 0;
       left: 12px;
     }

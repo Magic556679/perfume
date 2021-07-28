@@ -1,5 +1,13 @@
 <template>
-    <Loading :active="isLoading" :z-index="1060"></Loading>
+    <!-- <Loading :active="isLoading" :z-index="1060"></Loading> -->
+    <Loading :active="isLoading" :z-index="1060">
+      <div class="loadingio-spinner-spin-rvvfjvnp9z"><div class="ldio-hqeuxluc1v">
+        <div><div></div></div><div><div></div></div><div><div></div></div><div>
+        <div></div></div><div><div></div></div><div><div></div></div><div><div>
+        </div></div><div><div></div></div>
+        </div>
+      </div>
+    </Loading>
     <div id="carts">
       <header>
           <div class="container h-100">
@@ -68,12 +76,7 @@
                                 </div>
                               </div>
                           </td>
-                          <td class="">
-                              <!-- <small
-                              v-if="cart.final_total !== cart.total"
-                              class="text-success"
-                              >折扣價：</small
-                              > -->
+                          <td>
                               NT${{ $toCurrency(item.final_total)}}
                           </td>
                           <td>
@@ -157,9 +160,8 @@ export default {
     removeCartItem(id) {
       this.isLoading = true;
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${id}`;
-      this.$http.delete(url).then((res) => {
+      this.$http.delete(url).then(() => {
         emitter.emit('update-cart');
-        console.log(res);
         this.getCarts();
         this.isLoading = false;
       });
@@ -170,15 +172,13 @@ export default {
         product_id: id,
         qty,
       };
-      this.$http.put(url, { data: cart }).then((res) => {
-        console.log(res);
+      this.$http.put(url, { data: cart }).then(() => {
         this.getCarts();
       });
     },
     coupon() {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/coupon`;
       this.$http.post(url, { data: this.couponNum }).then((res) => {
-        console.log(res);
         if (res.data.success) {
           this.$swal({
             title: res.data.message,

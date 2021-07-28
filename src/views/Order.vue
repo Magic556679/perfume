@@ -1,6 +1,14 @@
 <template>
 <div class="container">
-    <Loading :active="isLoading" :z-index="1060"></Loading>
+    <!-- <Loading :active="isLoading" :z-index="1060"></Loading> -->
+    <Loading :active="isLoading" :z-index="1060">
+      <div class="loadingio-spinner-spin-rvvfjvnp9z"><div class="ldio-hqeuxluc1v">
+        <div><div></div></div><div><div></div></div><div><div></div></div><div>
+        <div></div></div><div><div></div></div><div><div></div></div><div><div>
+        </div></div><div><div></div></div>
+        </div>
+      </div>
+    </Loading>
     <div class="my-5 row justify-content-center">
         <Form ref="form" class="col-md-6" v-slot="{ errors }" @submit="createOrder">
           <div class="d-flex justify-content-between">
@@ -137,8 +145,7 @@ export default {
       this.isLoading = true;
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/order`;
       const order = this.form;
-      this.$http.post(url, { data: order }).then((res) => {
-        console.log(res);
+      this.$http.post(url, { data: order }).then(() => {
         this.$refs.form.resetForm();
         emitter.emit('update-cart');
         this.isLoading = false;
