@@ -24,7 +24,8 @@
           <i class="bi bi-suit-heart-fill"></i>
           </router-link>
           <div class="rounded-pill bg-danger
-          text-white position-absolute" v-if="this.newNum > 0">{{ newNum }}</div>
+          text-white position-absolute" v-if="this.newNum > 0">{{ newNum }}
+          </div>
         </li>
         <li class="nav-item position-relative">
           <router-link to="/cart" class="nav-link">
@@ -56,7 +57,6 @@ export default {
     return {
       cart: {},
       myFavorite: storageMethods.get() || [],
-      FavoriteNum: 0,
       newNum: 0,
     };
   },
@@ -65,10 +65,15 @@ export default {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`;
       this.$http.get(url).then((res) => {
         this.cart = res.data.data;
+      }).catch(() => {
+        this.$swal({
+          title: '資料取得失敗',
+          icon: 'error',
+        });
+        this.loadingStatus = false;
       });
     },
     getmyFavorite() {
-      this.FavoriteNum = this.myFavorite.length;
       this.newNum = this.myFavorite.length;
     },
   },
@@ -79,6 +84,15 @@ export default {
       this.getCart();
     });
     emitter.on('favorite-num', (num) => {
+      this.getmyFavorite();
+      this.newNum = num;
+    });
+  },
+  unmounted() {
+    emitter.off('update-cart', () => {
+      this.getcart();
+    });
+    emitter.off('favorite-num', (num) => {
       this.getmyFavorite();
       this.newNum = num;
     });
@@ -103,7 +117,6 @@ export default {
   }
   #nav .position-absolute {
     top: 1px;
-    // right: -2px;
     right: -5px;
     width: 20px;
     font-size: 0.5rem;

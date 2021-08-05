@@ -9,7 +9,7 @@
     </div>
   </div>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
   .footer {
     margin-top: 6rem;
     color: #fff;

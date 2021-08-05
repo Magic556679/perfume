@@ -233,9 +233,6 @@ export default {
     };
   },
   emits: ['update-product'],
-
-  //  inject: ['emitter'],
-
   watch: {
     product() {
       this.tempProduct = this.product;
@@ -264,6 +261,12 @@ export default {
           this.tempProduct.imageUrl = res.data.imageUrl;
           this.$refs.fileInput.value = '';
         }
+      }).catch(() => {
+        this.$swal({
+          title: '資料取得失敗',
+          icon: 'error',
+        });
+        this.loadingStatus = false;
       });
     },
     openModal() {

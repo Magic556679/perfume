@@ -3,39 +3,39 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 const routes = [
   {
     path: '/',
-    component: () => import('../views/Frontdesk.vue'),
+    component: () => import('../views/fronted/Frontdesk.vue'),
     children: [
       {
         path: '',
-        component: () => import('../views/Home.vue'),
+        component: () => import('../views/fronted/Home.vue'),
       },
       {
         path: 'products',
-        component: () => import('../views/Products.vue'),
+        component: () => import('../views/fronted/Products.vue'),
       },
       {
         path: 'product/:id',
-        component: () => import('../views/Product.vue'),
+        component: () => import('../views/fronted/Product.vue'),
       },
       {
         path: 'cart',
-        component: () => import('../views/Carts.vue'),
+        component: () => import('../views/fronted/Carts.vue'),
       },
       {
         path: 'order',
-        component: () => import('../views/Order.vue'),
+        component: () => import('../views/fronted/Order.vue'),
       },
       {
         path: 'check',
-        component: () => import('../views/Check.vue'),
+        component: () => import('../views/fronted/Check.vue'),
       },
       {
         path: 'favorite',
-        component: () => import('../views/Favorite.vue'),
+        component: () => import('../views/fronted/Favorite.vue'),
       },
       {
         path: 'about',
-        component: () => import('../views/About.vue'),
+        component: () => import('../views/fronted/About.vue'),
       },
     ],
   },
@@ -45,15 +45,15 @@ const routes = [
     children: [
       {
         path: '',
-        component: () => import('../views/Dashboard/Products.vue'),
+        component: () => import('../views/backed/Products.vue'),
       },
       {
         path: 'orders',
-        component: () => import('../views/Dashboard/Orders.vue'),
+        component: () => import('../views/backed/Orders.vue'),
       },
       {
         path: 'coupons',
-        component: () => import('../views/Dashboard/Coupons.vue'),
+        component: () => import('../views/backed/Coupons.vue'),
       },
     ],
   },
