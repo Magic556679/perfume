@@ -17,7 +17,7 @@
     </div>
   </header>
   <section>
-    <div class="container">
+    <div class="container mt-5">
       <div class="row">
         <div class="col-lg-7 text-center mx-auto">
           <h3>濃香水系列</h3>
@@ -69,7 +69,7 @@
     </div>
   </section>
   <section>
-    <div class="container-fluid midBg">
+    <div class="container-fluid midBg mt-5">
       <div class="row h-100">
         <div class="col-lg-6 col-12   d-flex justify-content-center align-items-center">
           <h3>全新系列即將上市<br>敬請期待！</h3>
@@ -78,7 +78,7 @@
     </div>
   </section>
   <section>
-    <div class="container">
+    <div class="container mt-5">
       <div class="row">
         <div class="col-12 text-center">
           <h3>香水有些分類呢？</h3>
@@ -109,6 +109,26 @@
         </div>
         <div class="col-md-6">
           <img src="https://i.imgur.com/pQa93Zs.png" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="bottomBg">
+      <div class="container mt-5 subscribe">
+        <div class="row h-100 d-flex  align-items-center">
+          <div class="col-lg-4 col-12 ">
+            <h2>訂閱電子報</h2>
+            <h3>取得最新消息！</h3>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="請輸入電子信箱"
+              aria-label="Input group example" aria-describedby="btnGroupAddon2">
+              <div class="input-group-prepend">
+                  <button class="input-group-text btn-pink" id="btnGroupAddon2"
+                  >訂閱</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -157,10 +177,10 @@ export default {
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
-    margin-top: -56px;
+    // margin-top: -56px;
     .headerTitle {
       padding: 30px;
-      background: rgba(219, 212, 212, 0.5);
+      background: rgba(219, 212, 212, 0.8);
     }
     .arrow {
       animation: arrow 2s infinite;
@@ -178,11 +198,10 @@ export default {
     }
   }
   section {
-    padding: 5rem 0;
+    // padding: 5rem 0;
     .images {
     background-position: center;
     background-size: cover;
-    // overflow: hidden;
    }
     .card img {
       height: 300px;
@@ -198,6 +217,20 @@ export default {
       height: 300px;
       h3 {
         color:#a43060;
+      }
+    }
+    .bottomBg {
+      background-image: url('https://i.imgur.com/JlpU1nO.jpg');
+      background-position: 50% 20%;
+      background-size: cover;
+      h2 {
+        color:#fff;
+      }
+      h3 {
+        color:#fff;
+      }
+      .subscribe {
+        height: 350px;
       }
     }
   }
