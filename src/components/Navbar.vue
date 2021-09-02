@@ -100,6 +100,12 @@ export default {
 };
 </script>
 <style lang="scss">
+  // .navbar {
+  //   position: fixed;
+  //   left: 0;
+  //   right: 0;
+  //   z-index: 100;
+  // }
   .navbar-dark .navbar-nav .router-link-active:focus {
     color: #fff;
   }

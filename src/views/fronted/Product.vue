@@ -9,62 +9,62 @@
   </Loading>
   <div class="container mt-5">
     <div class="row align-items-center mb-5">
-            <div class="col-md-7">
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img :src="product.imageUrl" class="d-block w-100" alt="...">
-                </div>
-                </div>
+      <div class="col-md-7">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img :src="product.imageUrl" class="d-block w-100" alt="...">
             </div>
             </div>
-            <div class="col-md-5">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb bg-white px-0 mb-0 py-3">
-                <li class="breadcrumb-item">
-                    <router-link to="/" class="text-pink">首頁</router-link>
-                </li>
-                <li class="breadcrumb-item">
-                    <router-link to="/Products" class="text-pink">商品</router-link>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">{{ product.title }}</li>
-                </ol>
-            </nav>
-            <h2 class="fw-bold h1 mb-3">{{ product.title }}</h2>
-            <p>{{ product.content }}</p>
-            <p>{{ product.description }}</p>
-            <p class="mb-0 text-muted"
-            v-if="productMoney.product">
-            <del>NT${{ $toCurrency(productMoney.product.origin_price) }}</del></p>
-            <p class="h4 fw-bold"
-            v-if="productMoney.product">NT${{ $toCurrency(productMoney.product.price) }}</p>
-            <div class="row align-items-center">
-                <div class="col-6">
-                <div class="input-group my-3 bg-secondary rounded">
-                    <div class="input-group-prepend">
-                      <button class="btn btn-outline-dark border-0 py-2" type="button"
-                        @click="addNum">
-                        <i class="bi bi-plus-lg"></i>
-                      </button>
-                    </div>
-                    <input type="text" class="form-control border-0 text-center
-                    my-auto shadow-none bg-light"
-                    placeholder="" aria-label="Example text with button addon"
-                    aria-describedby="button-addon1" v-model="qty" disabled>
-                    <div class="input-group-append">
-                      <button class="btn btn-outline-dark border-0 py-2" type="button"
-                      @click="cutNum">
-                          <i class="bi bi-dash-lg"></i>
-                      </button>
-                    </div>
-                </div>
-                </div>
-                <div class="col-6">
-                <button type="button" class="btn btn-dark btn-pink round-0 py-2"
-                @click="addToCart">加入購物車</button>
-                </div>
-            </div>
-            </div>
+        </div>
+      </div>
+      <div class="col-md-5">
+      <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-white px-0 mb-0 py-3">
+          <li class="breadcrumb-item">
+              <router-link to="/" class="text-pink">首頁</router-link>
+          </li>
+          <li class="breadcrumb-item">
+              <router-link to="/Products" class="text-pink">商品</router-link>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">{{ product.title }}</li>
+          </ol>
+      </nav>
+      <h2 class="fw-bold h1 mb-3">{{ product.title }}</h2>
+      <p>{{ product.content }}</p>
+      <p>{{ product.description }}</p>
+      <p class="mb-0 text-muted"
+      v-if="productMoney.product">
+      <del>NT${{ $toCurrency(productMoney.product.origin_price) }}</del></p>
+      <p class="h4 fw-bold"
+      v-if="productMoney.product">NT${{ $toCurrency(productMoney.product.price) }}</p>
+      <div class="row align-items-center">
+          <div class="col-6">
+          <div class="input-group my-3 bg-secondary rounded">
+              <div class="input-group-prepend">
+                <button class="btn btn-outline-dark border-0 py-2" type="button"
+                  @click="addNum">
+                  <i class="bi bi-plus-lg"></i>
+                </button>
+              </div>
+              <input type="text" class="form-control border-0 text-center
+              my-auto shadow-none bg-light"
+              placeholder="" aria-label="Example text with button addon"
+              aria-describedby="button-addon1" v-model="qty" disabled>
+              <div class="input-group-append">
+                <button class="btn btn-outline-dark border-0 py-2" type="button"
+                @click="cutNum">
+                    <i class="bi bi-dash-lg"></i>
+                </button>
+              </div>
+          </div>
+          </div>
+          <div class="col-6">
+          <button type="button" class="btn btn-dark btn-pink round-0 py-2"
+          @click="addToCart">加入購物車</button>
+          </div>
+      </div>
+      </div>
     </div>
     <button type="button" class="btn btn-dark btn-pink round-0 py-2 mb-5">
         <router-link to="/Products" class="text-white" >來去逛逛</router-link>
@@ -88,6 +88,12 @@
             <div class="px-5">
                 <h3 style="white-space:nowrap;">{{ image.title }}</h3>
                 <h4>NT${{ $toCurrency(image.price) }}</h4>
+                <router-link :to="`/product/${image.id}`"
+                style="text-decoration:none;margin-left: 10px;">
+                  <button type="button"
+                  class="btn btn-secondary round-0 py-2 mt-3">
+                  查看更多</button>
+                </router-link>
             </div>
         </swiper-slide>
     </swiper>

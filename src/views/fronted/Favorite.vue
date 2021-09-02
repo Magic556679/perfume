@@ -167,7 +167,7 @@ export default {
   object-fit: cover;
 }
 #favorite .active {
-color: red !important;
+color:#ec0867 !important;
 }
 #favorite .bi-suit-heart-fill {
   color: #fff;

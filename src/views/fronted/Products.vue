@@ -37,7 +37,11 @@
               <div class="row">
                 <div class="col-md-3" v-for="product in filterProducts" :key="product.id">
                     <div class="card border-0 mb-4 position-relative">
-                        <img :src="product.imageUrl" class="card-img-top rounded-0" alt="..." />
+                      <router-link :to="`/product/${product.id}`">
+                        <div class="hoverImg rounded">
+                          <img :src="product.imageUrl"
+                          class="card-img-top rounded-0 hoverImg-0"  />
+                        </div>
                         <a href="#" class="text-dark position-absolute"
                             style="right: 20px; top: 8px;font-size: 2rem;"
                             @click.prevent="addMyFavorite(product)">
@@ -49,15 +53,17 @@
                         <div class="card-body p-0">
                             <h4 class="mb-0 mt-3 text-dark">{{ product.title }}</h4>
                             <p class="text-muted mt-3">NT$ {{ $toCurrency(product.price) }}</p>
-                            <div class="d-flex justify-content-between">
+                        </div>
+                      </router-link>
+                        <div class="d-flex">
                               <button type="button" class="btn btn-dark btn-pink
                                 round-0 py-2"
                                 @click="addToCart(product.id)">加入購物車</button>
                                 <router-link :to="`/product/${product.id}`"
-                                style="text-decoration:none"><button type="button"
+                                style="text-decoration:none;margin-left: 10px;">
+                                <button type="button"
                                 class="btn btn-secondary round-0 py-2">查看更多</button>
                                 </router-link>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -180,15 +186,31 @@ header{
     color: #000;
   }
 }
-.card img {
-  height: 300px;
-  object-fit: cover;
+.card {
+  img {
+    height: 300px;
+    object-fit: cover;
+  }
+  a {
+    text-decoration:none;
+  }
+  .hoverImg {
+    position: relative;
+    // border: 1px solid black;
+    overflow: hidden;
+    .hoverImg-0 {
+      transition: transform 1s ease;
+    }
+  }
+  .hoverImg:hover .hoverImg-0 {
+    transform: scale(1.4);
+  }
 }
 .min {
     min-height: 500px;
 }
 #products .active {
-  color: red !important;
+  color: #ec0867 !important;
 }
 #products .bi-suit-heart-fill {
   color: #fff;
