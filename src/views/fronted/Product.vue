@@ -30,8 +30,12 @@
           <li class="breadcrumb-item active" aria-current="page">{{ product.title }}</li>
           </ol>
       </nav>
-      <h2 class="fw-bold h1 mb-3">{{ product.title }}</h2>
+      <h2 class="fw-bold mb-3">{{ product.title }}</h2>
+      <!-- <p>產品描述</p> -->
+      <h3 class="fw-bold">產品說明</h3>
       <p>{{ product.content }}</p>
+      <!-- <p>產品說明</p> -->
+      <h3 class="fw-bold">靈感</h3>
       <p>{{ product.description }}</p>
       <p class="mb-0 text-muted"
       v-if="productMoney.product">
@@ -66,11 +70,28 @@
       </div>
       </div>
     </div>
-    <button type="button" class="btn btn-dark btn-pink round-0 py-2 mb-5">
-        <router-link to="/Products" class="text-white" >來去逛逛</router-link>
-    </button>
+    <div class="row mb-5">
+      <div class="col-12">
+        <h2><i class="bi bi-question-circle-fill me-2" style="color:#a43060;"></i>常見問題</h2>
+        <ul>
+          <li>使用一段時間香味似乎有所不同？
+             <p>隨著您使用香水，酒精會逐漸揮發並消散，
+               此外，由於快將用完的香水經過熟成，色澤與香氣會較為濃郁。</p>
+          </li>
+          <li>平常該怎麼保存呢？
+             <p>保存方式：如果您希望盡量享受原本的香味，請於使用後緊閉瓶蓋，
+                並將之儲藏在室溫穩定的陰涼處，避免陽光直射。我們建議您在香水開封一年內用完。</p>
+          </li>
+          <li>久未使用的香水變了顏色，可以繼續使用嗎？
+             <p>酒精隨著每次使用而減少，產品顏色會隨之變得越來越深，香味亦會變得越來越濃郁。
+                如果您不介意香味有所改變，可以繼續使用產品。</p>
+          </li>
+        </ul>
+      </div>
+    </div>
     <div class="row mb-5">
         <div class="col-12">
+            <h2><i class="bi bi-cart-fill me-2" style="color:#a43060;"></i>您可能喜歡</h2>
             <swiper
             :space-between="50"
             :loop="true"
@@ -205,6 +226,9 @@ export default {
 <style lang="scss" scoped>
   a {
     text-decoration: none;
+  }
+  h3 {
+    font-size: 1.2rem;
   }
   img {
     height: 80vh;
