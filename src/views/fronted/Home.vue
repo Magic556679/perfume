@@ -153,23 +153,23 @@ export default {
   data() {
     return {};
   },
-  // methods: {
-  //   couponsTime() {
-  //     setTimeout(() => {
-  //       this.$swal({
-  //         title: '領取優惠券',
-  //         text: 'PerfumeOff',
-  //         icon: false,
-  //         showConfirmButton: true,
-  //         timer: 10000,
-  //         imageUrl: 'https://i.imgur.com/21uzzAF.jpg',
-  //       });
-  //     }, 3000);
-  //   },
-  // },
-  // mounted() {
-  //   this.couponsTime();
-  // },
+  methods: {
+    couponsTime() {
+      setTimeout(() => {
+        this.$swal({
+          title: '領取優惠券',
+          text: 'PerfumeOff',
+          icon: false,
+          showConfirmButton: true,
+          timer: 10000,
+          imageUrl: 'https://i.imgur.com/21uzzAF.jpg',
+        });
+      }, 3000);
+    },
+  },
+  mounted() {
+    this.couponsTime();
+  },
 };
 </script>
 <style lang="scss" scoped>

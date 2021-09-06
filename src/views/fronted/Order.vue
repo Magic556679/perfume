@@ -10,12 +10,6 @@
     </Loading>
     <div class="my-5 row justify-content-center">
         <Form ref="form" class="col-md-6" v-slot="{ errors }" @submit="createOrder">
-          <div class="d-flex justify-content-between">
-            <button type="button" class="
-            btn-pink rounded py-2 shadow-none" style="border:none">繼續購物</button>
-            <button type="submit" class="
-            btn-pink rounded py-2 shadow-none" style="border:none">送出訂單</button>
-          </div>
           <p class="text-danger mb-2 mt-5">*為必填欄位</p>
           <div class="mb-3">
             <label for="email" class="form-label">Email<span
@@ -107,6 +101,12 @@
               rows="10"
               v-model="form.message"
             ></textarea>
+          </div>
+          <div class="d-flex justify-content-between">
+            <button type="button" class="
+            btn-pink rounded py-2 shadow-none" style="border:none">繼續購物</button>
+            <button type="submit" class="
+            btn-pink rounded py-2 shadow-none" style="border:none">送出訂單</button>
           </div>
         </Form>
       </div>

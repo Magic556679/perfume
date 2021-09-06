@@ -22,13 +22,14 @@
       <div class="container min mt-5" v-if="cart.carts">
           <div class="row justify-content-center" v-if="cart.carts.length > 0">
               <div class="col-md-8">
-                  <div class="d-flex justify-content-between">
-                    <button type="button" class="
-                    btn-pink rounded py-2 shadow-none" style="border:none"
-                    @click="$router.push('/products')">繼續購物</button>
-                    <button type="button" class="
-                    btn-pink rounded py-2 shadow-none" style="border:none"
-                    @click="$router.push('/order')">填寫訂單</button>
+                  <div class="input-group">
+                      <div class="input-group-prepend">
+                          <button class="input-group-text btn-pink" id="btnGroupAddon2"
+                          @click="coupon()">套用優惠券</button>
+                      </div>
+                          <input type="text" class="form-control" placeholder="輸入優惠卷"
+                          aria-label="Input group example" aria-describedby="btnGroupAddon2"
+                          v-model="couponNum.code">
                   </div>
                   <table class="table align-middle text-center mt-5">
                       <thead>
@@ -99,14 +100,13 @@
                               text-success">$NT{{ $toCurrency(cart.final_total) }}</td>
                           </tr>
                   </table>
-                  <div class="input-group">
-                      <div class="input-group-prepend">
-                          <button class="input-group-text btn-pink" id="btnGroupAddon2"
-                          @click="coupon()">套用優惠券</button>
-                      </div>
-                          <input type="text" class="form-control" placeholder="輸入優惠卷"
-                          aria-label="Input group example" aria-describedby="btnGroupAddon2"
-                          v-model="couponNum.code">
+                  <div class="d-flex justify-content-between pt-5">
+                    <button type="button" class="
+                    btn-pink rounded py-2 shadow-none" style="border:none"
+                    @click="$router.push('/products')">繼續購物</button>
+                    <button type="button" class="
+                    btn-pink rounded py-2 shadow-none" style="border:none"
+                    @click="$router.push('/order')">填寫訂單</button>
                   </div>
               </div>
           </div>

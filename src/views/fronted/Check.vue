@@ -87,7 +87,7 @@
                      </tr>
                 </tbody>
             </table>
-            <div class="mt-5 text-center">
+            <div class="mt-5 mb-5 text-center">
                 <button type="button" class="
                  btn-pink rounded py-2 shadow-none"
                  style="border:none" @click="pay()">確認付款</button>

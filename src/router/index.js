@@ -30,6 +30,10 @@ const routes = [
         component: () => import('../views/fronted/Check.vue'),
       },
       {
+        path: 'payment',
+        component: () => import('../views/Payment.vue'),
+      },
+      {
         path: 'favorite',
         component: () => import('../views/fronted/Favorite.vue'),
       },
@@ -60,10 +64,6 @@ const routes = [
   {
     path: '/login',
     component: () => import('../views/Login.vue'),
-  },
-  {
-    path: '/payment',
-    component: () => import('../views/Payment.vue'),
   },
   {
     path: '/:pathMatch(.*)*',
