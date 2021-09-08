@@ -19,8 +19,9 @@
             </div>
           </div>
       </header>
-      <div class="container min mt-5" v-if="cart.carts">
+      <div class="container min my-5" v-if="cart.carts">
           <div class="row justify-content-center" v-if="cart.carts.length > 0">
+              <StepItem :step="step"></StepItem>
               <div class="col-md-8">
                   <div class="input-group">
                       <div class="input-group-prepend">
@@ -122,17 +123,22 @@
     </div>
 </template>
 <script>
-import emitter from '../../assets/javascript/emitter';
+import emitter from '@/assets/javascript/emitter';
+import StepItem from '@/components/StepItem.vue';
 
 export default {
   data() {
     return {
       cart: {},
+      step: 1,
       isLoading: false,
       couponNum: {
         code: '',
       },
     };
+  },
+  components: {
+    StepItem,
   },
   methods: {
     getCarts() {

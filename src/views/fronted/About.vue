@@ -39,7 +39,7 @@
             <img src="https://i.imgur.com/TaG850f.jpg" class="img-fluid">
             </div>
         </div>
-        <div class="row mt-5">
+        <div class="row my-5">
             <div class="col-md-6 d-flex align-items-center">
             <div>
                 <h3>-社會-</h3>

@@ -9,8 +9,9 @@
       </div>
     </Loading>
     <div class="my-5 row justify-content-center">
+      <StepItem :step="step"></StepItem>
         <Form ref="form" class="col-md-6" v-slot="{ errors }" @submit="createOrder">
-          <p class="text-danger mb-2 mt-5">*為必填欄位</p>
+          <p class="text-danger mb-2">*為必填欄位</p>
           <div class="mb-3">
             <label for="email" class="form-label">Email<span
             class="text-danger ms-1">*</span></label>
@@ -104,7 +105,8 @@
           </div>
           <div class="d-flex justify-content-between">
             <button type="button" class="
-            btn-pink rounded py-2 shadow-none" style="border:none">繼續購物</button>
+            btn-pink rounded py-2 shadow-none" style="border:none"
+            @click="$router.push('/products')">繼續購物</button>
             <button type="submit" class="
             btn-pink rounded py-2 shadow-none" style="border:none">送出訂單</button>
           </div>
@@ -113,12 +115,14 @@
 </div>
 </template>
 <script>
-import emitter from '../../assets/javascript/emitter';
+import emitter from '@/assets/javascript/emitter';
+import StepItem from '@/components/StepItem.vue';
 
 export default {
   data() {
     return {
       isLoading: false,
+      step: 2,
       form: {
         user: {
           name: '',
@@ -130,6 +134,9 @@ export default {
         message: '',
       },
     };
+  },
+  components: {
+    StepItem,
   },
   methods: {
     createOrder() {

@@ -8,6 +8,7 @@
       </div>
      </Loading>
     <div class="container mt-5" id="check">
+      <StepItem :step="step"></StepItem>
         <div class="row justify-content-center">
           <div class="col-12 col-lg-6">
             <div class="text-center">
@@ -97,14 +98,20 @@
     </div>
 </template>
 <script>
+import StepItem from '@/components/StepItem.vue';
+
 export default {
   data() {
     return {
+      step: 3,
       products: [],
       user: {},
       price: '',
       isLoading: false,
     };
+  },
+  components: {
+    StepItem,
   },
   methods: {
     getOrders() {
