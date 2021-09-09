@@ -5,22 +5,23 @@
     <button class="navbar-toggler" type="button"
     data-bs-toggle="collapse" data-bs-target="#navbarNav"
     aria-controls="navbarNav" aria-expanded="false"
-    aria-label="Toggle navigation">
+    aria-label="Toggle navigation" @click="openNav">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse flex justify-content-end" id="navbarNav" >
+    <div class="collapse navbar-collapse flex justify-content-end"
+    :class=" toggleNav ? 'show' :'' " id="navbarNav" >
       <ul class="navbar-nav fs-7">
         <li class="nav-item">
-          <router-link to="/" class="nav-link">首頁</router-link>
+          <router-link to="/" class="nav-link" @click="closeNav">首頁</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/products" class="nav-link">商品</router-link>
+          <router-link to="/products" class="nav-link" @click="closeNav">商品</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/about" class="nav-link">關於我們</router-link>
+          <router-link to="/about" class="nav-link" @click="closeNav">關於我們</router-link>
         </li>
         <li class="nav-item position-relative">
-          <router-link to="/favorite" class="nav-link">
+          <router-link to="/favorite" class="nav-link" @click="closeNav">
           <i class="bi bi-suit-heart-fill"></i>
           </router-link>
           <div class="rounded-pill bg-danger
@@ -28,7 +29,7 @@
           </div>
         </li>
         <li class="nav-item position-relative">
-          <router-link to="/cart" class="nav-link">
+          <router-link to="/cart" class="nav-link" @click="closeNav">
             <i class="bi bi-cart-fill"></i>
           </router-link>
           <div v-if="cart.carts">
@@ -58,6 +59,7 @@ export default {
       cart: {},
       myFavorite: storageMethods.get() || [],
       newNum: 0,
+      toggleNav: false,
     };
   },
   methods: {
@@ -75,6 +77,13 @@ export default {
     },
     getmyFavorite() {
       this.newNum = this.myFavorite.length;
+    },
+    openNav() {
+      // this.toggleNav = !this.toggleNav;
+      this.toggleNav = true;
+    },
+    closeNav() {
+      this.toggleNav = false;
     },
   },
   mounted() {
@@ -100,12 +109,14 @@ export default {
 };
 </script>
 <style lang="scss">
-  // .navbar {
-  //   position: fixed;
-  //   left: 0;
-  //   right: 0;
-  //   z-index: 100;
-  // }
+  .navbar-collapse{
+    transition: 0.3s ease-in-out;
+  }
+  .navbar-toggler:focus {
+    text-decoration: none;
+    outline: 0;
+    box-shadow: 0 0 0 #ccc;
+  }
   .navbar-dark .navbar-nav .router-link-active:focus {
     color: #fff;
   }

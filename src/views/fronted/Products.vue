@@ -20,7 +20,7 @@
   </header>
     <div class="container min mt-5" id="products">
         <div class="row">
-            <div class="col-12 col-lg-3">
+            <div class="col-12 col-lg-3 pb-5 pb-lg-1">
                 <div class="list-group">
                 <a href="#" class="list-group-item list-group-item-action"
                 @click.prevent="selectCategory = item">全部商品</a>

@@ -23,18 +23,9 @@
           <div class="row justify-content-center" v-if="cart.carts.length > 0">
               <StepItem :step="step"></StepItem>
               <div class="col-md-8">
-                  <div class="input-group">
-                      <div class="input-group-prepend">
-                          <button class="input-group-text btn-pink" id="btnGroupAddon2"
-                          @click="coupon()">套用優惠券</button>
-                      </div>
-                          <input type="text" class="form-control" placeholder="輸入優惠卷"
-                          aria-label="Input group example" aria-describedby="btnGroupAddon2"
-                          v-model="couponNum.code">
-                  </div>
                   <table class="table align-middle text-center mt-5">
                       <thead>
-                      <tr>
+                      <tr class="table-dark">
                           <th class="d-none d-lg-table-cell"></th>
                           <th>品名</th>
                           <th width="130px">數量</th>
@@ -89,18 +80,29 @@
                           </tr>
                       </template>
                       </tbody>
-                          <tr>
-                              <td colspan="3" class="text-end">總計</td>
-                              <td class="d-none d-lg-table-cell"></td>
-                              <td class="text-end">$NT{{ $toCurrency(cart.total) }}</td>
-                          </tr>
-                          <tr v-if="cart.final_total !== cart.total">
-                              <td colspan="3" class="text-end text-success">折扣價</td>
-                              <td class="d-none d-lg-table-cell"></td>
-                              <td class="text-end
-                              text-success">$NT{{ $toCurrency(cart.final_total) }}</td>
-                          </tr>
+                      <tfoot>
+                        <tr class="table-dark">
+                            <td colspan="3" class="text-end">總計</td>
+                            <td class="d-none d-lg-table-cell"></td>
+                            <td class="text-end">$NT{{ $toCurrency(cart.total) }}</td>
+                        </tr>
+                        <tr v-if="cart.final_total !== cart.total">
+                            <td colspan="3" class="text-end text-success">折扣價</td>
+                            <td class="d-none d-lg-table-cell"></td>
+                            <td class="text-end
+                            text-success">$NT{{ $toCurrency(cart.final_total) }}</td>
+                        </tr>
+                      </tfoot>
                   </table>
+                  <div class="input-group">
+                      <div class="input-group-prepend">
+                          <button class="input-group-text btn-pink" id="btnGroupAddon2"
+                          @click="coupon()">套用優惠券</button>
+                      </div>
+                          <input type="text" class="form-control" placeholder="輸入優惠卷"
+                          aria-label="Input group example" aria-describedby="btnGroupAddon2"
+                          v-model="couponNum.code">
+                  </div>
                   <div class="d-flex justify-content-between pt-5">
                     <button type="button" class="
                     btn-pink rounded py-2 shadow-none" style="border:none"
@@ -229,10 +231,12 @@ export default {
       color: #000;
       }
   }
-  table img {
-    height: 25vh;
-    width: 10vw;
-    object-fit: cover;
+  table {
+    img {
+      height: 25vh;
+      width: 10vw;
+      object-fit: cover;
+    }
   }
   .min {
     min-height: 500px;
