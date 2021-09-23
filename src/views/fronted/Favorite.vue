@@ -166,10 +166,23 @@ export default {
   height: 300px;
   object-fit: cover;
 }
+
 #favorite .active {
 color:#ec0867 !important;
 }
 #favorite .bi-suit-heart-fill {
   color: #fff;
+}
+@media screen and (min-width: 768px) {
+  #favorite .min {
+    padding-top: 20vh;
+    padding-bottom: 20vh;
+  }
+}
+@media screen and (max-width: 767px) {
+  #favorite .min {
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+  }
 }
 </style>

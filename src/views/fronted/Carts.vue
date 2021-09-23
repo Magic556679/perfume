@@ -217,38 +217,37 @@ export default {
 };
 </script>
 <style lang="scss">
-  #carts header{
-      background-image: url('https://i.imgur.com/azBaFHU.jpg');
-      background-position: 50% 80%;
-      background-size: cover;
-      background-repeat: no-repeat;
-      height: 400px;
-      .headerTitle {
-        padding: 30px;
-        background: rgba(219, 212, 212, 0.5);
-      }
-      h1 {
-      color: #000;
-      }
+#carts header {
+  background-image: url('https://i.imgur.com/azBaFHU.jpg');
+  background-position: 50% 80%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 400px;
+  .headerTitle {
+    padding: 30px;
+    background: rgba(219, 212, 212, 0.5);
   }
-  table {
-    img {
-      height: 25vh;
-      width: 10vw;
-      object-fit: cover;
-    }
+  h1 {
+  color: #000;
   }
-  .min {
-    min-height: 500px;
+}
+table {
+  img {
+    height: 25vh;
+    width: 10vw;
+    object-fit: cover;
   }
-  @media screen and (max-width:768px) {
-    .min {
-    min-height: 768px;
-    }
+}
+@media screen and (min-width: 768px) {
+  #carts .min {
+    padding-top: 20vh;
+    padding-bottom: 20vh;
   }
-  @media screen and (max-width:767px) {
-    .min {
-    min-height: 600px;
-    }
+}
+@media screen and (max-width: 767px) {
+  #carts .min {
+    padding-top: 10vh;
+    padding-bottom: 10vh;
   }
+}
 </style>

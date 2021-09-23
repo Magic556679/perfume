@@ -1,33 +1,36 @@
 <template>
-    <Loading :active="isLoading" :z-index="1060">
-      <div class="loadingio-spinner-spin-rvvfjvnp9z"><div class="ldio-hqeuxluc1v">
-        <div><div></div></div><div><div></div></div><div><div></div></div><div>
-        <div></div></div><div><div></div></div><div><div></div></div><div><div>
-        </div></div><div><div></div></div>
-        </div>
+  <Loading :active="isLoading" :z-index="1060">
+    <div class="loadingio-spinner-spin-rvvfjvnp9z"><div class="ldio-hqeuxluc1v">
+      <div><div></div></div><div><div></div></div><div><div></div></div><div>
+      <div></div></div><div><div></div></div><div><div></div></div><div><div>
+      </div></div><div><div></div></div>
       </div>
-    </Loading>
-    <header>
-    <div class="container h-100">
-      <div class="row align-items-center justify-content-center h-100">
-        <div class="col-md-6 col-12">
-          <div class="headerTitle">
-            <h1 class="text-center">商品</h1>
-          </div>
+    </div>
+  </Loading>
+  <header>
+  <div class="container h-100">
+    <div class="row align-items-center justify-content-center h-100">
+      <div class="col-md-6 col-12">
+        <div class="headerTitle">
+          <h1 class="text-center">商品</h1>
         </div>
       </div>
     </div>
+  </div>
   </header>
     <div class="container min mt-5" id="products">
         <div class="row">
             <div class="col-12 col-lg-3 pb-5 pb-lg-1">
                 <div class="list-group">
                 <a href="#" class="list-group-item list-group-item-action"
-                @click.prevent="selectCategory = item">全部商品</a>
+                :class="{listActive: selectCategory == ''|| selectCategory == undefined}"
+                @click.prevent="selectCategory = item"
+                >全部商品</a>
                 <a  href="#"
                     v-for="item in categories"
                     :key="item"
                     class="list-group-item list-group-item-action"
+                    :class="{listActive: selectCategory == item}"
                     @click.prevent="selectCategory = item"
                     >{{ item }}</a
                 >
@@ -56,14 +59,14 @@
                         </div>
                       </router-link>
                         <div class="d-flex">
-                              <button type="button" class="btn btn-dark btn-pink
-                                round-0 py-2"
-                                @click="addToCart(product.id)">加入購物車</button>
-                                <router-link :to="`/product/${product.id}`"
-                                style="text-decoration:none;margin-left: 10px;">
-                                <button type="button"
-                                class="btn btn-secondary round-0 py-2">查看更多</button>
-                                </router-link>
+                          <button type="button" class="btn btn-dark btn-pink
+                            round-0 py-2"
+                            @click="addToCart(product.id)">加入購物車</button>
+                            <router-link :to="`/product/${product.id}`"
+                            style="text-decoration:none;margin-left: 10px;">
+                            <button type="button"
+                            class="btn btn-secondary round-0 py-2">查看更多</button>
+                            </router-link>
                         </div>
                     </div>
                 </div>
@@ -73,7 +76,7 @@
     </div>
 </template>
 <script>
-import emitter from '../../assets/javascript/emitter';
+import emitter from '@/assets/javascript/emitter';
 
 const storageMethods = {
   save(favorite) {
@@ -139,7 +142,6 @@ export default {
       });
     },
     addMyFavorite(item) {
-      // this.myFavorite.push(item.id);
       if (this.myFavorite.includes(item.id)) {
         this.myFavorite.splice(this.myFavorite.indexOf(item.id), 1);
         this.$swal({
@@ -172,7 +174,7 @@ export default {
 a {
   color: #000;
 }
-header{
+header {
     background-image: url('https://i.imgur.com/GiMm870.jpg');
     background-position: 50%;
     background-size: cover;
@@ -196,7 +198,6 @@ header{
   }
   .hoverImg {
     position: relative;
-    // border: 1px solid black;
     overflow: hidden;
     .hoverImg-0 {
       transition: transform 1s ease;
@@ -207,12 +208,19 @@ header{
   }
 }
 .min {
-    min-height: 500px;
+  min-height: 500px;
 }
-#products .active {
-  color: #ec0867 !important;
-}
-#products .bi-suit-heart-fill {
-  color: #fff;
+#products {
+  .active {
+    color: #ec0867 !important;
+  }
+  .listActive {
+    background-color: #a43060;
+    border-color: #a43060;
+    color: #fff;
+  }
+  .bi-suit-heart-fill {
+    color: #fff;
+  }
 }
 </style>
