@@ -3,7 +3,7 @@
   <header>
     <div class="container h-100">
       <div class="row align-items-center h-100">
-        <div class="col-md-6 col-12">
+        <div class="col-md-6 col-12" data-aos="fade-up" data-aos-duration="2000">
           <div class="headerTitle">
             <h2>每次用香水，都像是赴一場約會。</h2>
             <h2>不需要任何裝飾，只需要幾滴香水。</h2>
@@ -22,7 +22,7 @@
   <section>
     <div class="container mt-5">
       <div class="row">
-        <div class="col-lg-7 text-center mx-auto">
+        <div class="col-lg-7 text-center mx-auto" data-aos="fade-up" data-aos-duration="2000">
           <h3>濃香水系列</h3>
           <h4 class="mt-5"><i class="bi bi-pin-angle-fill"></i> 價格差異</h4>
           <span>香精濃度的不同反應在價格差異。因為原料非常昂貴，尤其在純天然的情況下。因此使用的原料萃取物越少，最終產品的價格就越便宜。這就是為什麼古龍水通常更便宜。</span>
@@ -34,7 +34,11 @@
       </div>
       <div class="row mt-5">
         <div class="col-lg-6">
-          <div class="images h-100" style="background-image: url('https://i.imgur.com/4Tm4Us2.jpg')"></div>
+          <div class="images h-100"
+          data-aos="flip-left"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="2000"
+          style="background-image: url('https://i.imgur.com/4Tm4Us2.jpg')"></div>
         </div>
         <div class="col-6 col-lg-3">
           <div class="card">
@@ -106,7 +110,7 @@
               或者，您可以隨時使用這些技巧來延長香水的使用壽命。</p>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" data-aos="zoom-in" data-aos-duration="2000">
           <img src="https://i.imgur.com/7pqdNYg.png" class="img-fluid">
         </div>
       </div>
@@ -118,7 +122,7 @@
             <p>味道比較輕盈，很適合運動前後、沐浴後使用。它的香調變化比較不明顯，不管男女生都可以使用，也很適合當作入門香氛類型！</p>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" data-aos="zoom-in" data-aos-duration="2000">
           <img src="https://i.imgur.com/pQa93Zs.png" class="img-fluid">
         </div>
       </div>
@@ -164,7 +168,7 @@ export default {
           timer: 10000,
           imageUrl: 'https://i.imgur.com/21uzzAF.jpg',
         });
-      }, 3000);
+      }, 9000);
     },
   },
   mounted() {
@@ -188,7 +192,6 @@ export default {
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
-    // margin-top: -56px;
     .headerTitle {
       padding: 30px;
       background: rgba(219, 212, 212, 0.8);
@@ -230,7 +233,7 @@ export default {
       background-image: url('https://i.imgur.com/yPQZs6u.jpg');
       background-position: center;
       background-size: cover;
-      background-attachment: fixed;
+      // background-attachment: fixed;
       height: 300px;
       h3 {
         color:#a43060;

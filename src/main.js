@@ -4,6 +4,9 @@ import axios from 'axios';
 import VueAxios from 'vue-axios';
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
+// aos
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 // VeeValidate
 import {
   Form, Field, ErrorMessage, defineRule, configure,
@@ -34,6 +37,9 @@ const options = {
   showConfirmButton: false,
   confirmButtonColor: '#a43060',
 };
+AOS.init({
+  once: true,
+});
 
 const app = createApp(App);
 app.config.globalProperties.date = toDate;
