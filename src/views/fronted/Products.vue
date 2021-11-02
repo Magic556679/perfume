@@ -118,7 +118,7 @@ export default {
       });
     },
     getCategories() {
-      const categories = new Set();
+      const categories = new Set(); //  new Set() array 元素不重複
       this.products.forEach((item) => {
         categories.add(item.category);
       });
