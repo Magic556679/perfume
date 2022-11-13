@@ -99,51 +99,60 @@
 </template>
 <script>
 import StepItem from '@/components/StepItem.vue';
+import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import swal from 'sweetalert2';
+import axios from 'axios';
 
 export default {
-  data() {
-    return {
-      step: 3,
-      products: [],
-      user: {},
-      price: '',
-      isLoading: false,
-    };
-  },
-  components: {
-    StepItem,
-  },
-  methods: {
-    getOrders() {
+  components: { StepItem },
+  setup() {
+    const isLoading = ref(false);
+    const loadingStatus = ref(false);
+    const step = ref(3);
+    const user = ref({});
+    const products = ref([]);
+    const router = useRouter();
+    const getOrders = () => {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/orders?page=1`;
-      this.isLoading = true;
-      this.axios.get(url).then((res) => {
-        [this.user] = res.data.orders;
-        this.products = Object.values(this.user.products);
-        this.isLoading = false;
+      isLoading.value = true;
+      axios.get(url).then((res) => {
+        [user.value] = res.data.orders;
+        products.value = Object.values(user.value.products);
+        isLoading.value = false;
       }).catch(() => {
-        this.$swal({
+        swal.fire({
           title: '資料取得失敗',
           icon: 'error',
         });
-        this.loadingStatus = false;
+        isLoading.value = false;
       });
-    },
-    pay() {
-      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/pay/${this.user.id}`;
-      this.axios.post(url).then(() => {
-        this.$router.push('/payment');
-      }).catch(() => {
-        this.$swal({
+    };
+    const pay = () => {
+      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/pay/${user.value.id}`;
+      axios.post(url).then(() => {
+        router.push('/payment');
+      }).catch((err) => {
+        console.error(err);
+        swal.fire({
           title: '資料取得失敗',
           icon: 'error',
         });
-        this.loadingStatus = false;
+        loadingStatus.value = false;
       });
-    },
-  },
-  mounted() {
-    this.getOrders();
+    };
+    onMounted(() => {
+      getOrders();
+    });
+    return {
+      isLoading,
+      loadingStatus,
+      user,
+      products,
+      getOrders,
+      pay,
+      step,
+    };
   },
 };
 </script>
