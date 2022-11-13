@@ -56,13 +56,13 @@
                   </tr>
                   <tr>
                     <th>下單時間</th>
-                    <td>{{ tempOrder.create_at }}</td>
+                    <td>{{ date(tempOrder.create_at) }}</td>
                   </tr>
                   <tr>
                     <th>付款時間</th>
                     <td>
                       <span v-if="tempOrder.paid_date">
-                        {{ tempOrder.paid_date }}
+                        {{ date(tempOrder.paid_date) }}
                       </span>
                       <span v-else>時間不正確</span>
                     </td>
